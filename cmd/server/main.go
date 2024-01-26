@@ -43,4 +43,5 @@ func main() {
 
 	//Завершаем все!
 	application.EchoServer.Shutdown(ctx)
+	application.Storage.Stop()
 }
