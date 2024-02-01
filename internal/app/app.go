@@ -1,6 +1,7 @@
 package app
 
 import (
+	"context"
 	"github.com/fredmayer/go-rest-api-template/internal/storage/mysql"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
@@ -27,7 +28,8 @@ func New(options DbOptions) *App {
 	e := echo.New()
 	e.Use(middleware.Recover())
 
-	//TODO register routers
+	//Регистрируем роуты
+	RegisterRoutes(context.Background(), e, storage)
 
 	return &App{
 		EchoServer: e,
